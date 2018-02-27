@@ -2,7 +2,7 @@
 This workflow is quite easy to use. You only need to type `focus [time]` to activate your SelfControl application. If you don't fill in `time` argument, the default length of time is 15 minitues.
 
 ## Installation
-1. Download the workflow from [here](). Extract the workflow and put it into Alfred 3.
+1. Download the workflow from [here](https://github.com/Ericlee0210/alfred-selfcontrol-workflow/releases/tag/v1.0). Extract the workflow and put it into Alfred 3.
 2. Go to `Applications > Unitilities > Keychain Access`. Create a keychain item named after `SelfControl` (Account Name is same). Fill in your sudo password into the password field.
 3. Go to `System Preferences > Security & Privacy > Privacy`. In the Accessibility tab, make sure your Alfred 3 app is on the list.
 
