@@ -129,17 +129,7 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>on is_number(number_string)
-    try
-        set number_string to number_string as number
-        return true
-    on error
-        return false
-    end try
-end is_number
-
-on run argv	if (count of argv) &gt; 0 and is_number(item 1 of argv) and (item 1 of argv as number &gt; 15)		set myTime to item 1 of argv as number	else		set myTime to 15	end if		tell application "Usable Keychain Access"		set myPass to do shell script ("/usr/bin/security 2&gt;&amp;1 &gt;/dev/null find-generic-password -gl 'SelfControl' | cut -c 11-99 | sed 's/\"//g'")	end tell		tell application "SelfControl" to activate		tell application "System Events"		tell process "SelfControl"			try				tell slider of window "SelfControl" to set value to myTime
-			on error				return "Error: SelfControl can't not be opened."			end try						delay 0.1						try				click button "Start" of window "SelfControl"			on error				if (exists window 1) then					return "Error: SelfControl has been activated."				else					return "Error: SelfControl has been forcefully closed."				end if			end try		end tell				repeat until (exists window 1 of process "SecurityAgent")			if (exists button "Start" of window "SelfControl" of process "SelfControl") then				return "Error: Please click on the title bar of SecurityAgent; otherwise the script can't proceed."			end if		end repeat				tell window 1 of process "SecurityAgent"			set value of text field 2 to myPass						delay 0.1						click button "OK"		end tell	end tell		delay 1		tell application "SelfControl" to quit		return "SelfControl activated."end run</string>
+				<string>on is_number(number_string)	try		set number_string to number_string as number		return true	on error		return false	end tryend is_numberon run argv	if (count of argv) &gt; 0 and is_number(item 1 of argv) and (item 1 of argv as number &gt; 15) then		set myTime to item 1 of argv as number	else		set myTime to 15	end if		tell application "Usable Keychain Access"		set myPass to do shell script ("/usr/bin/security 2&gt;&amp;1 &gt;/dev/null find-generic-password -gl 'SelfControl' | cut -c 11-99 | sed 's/\"//g'")	end tell		tell application "SelfControl" to activate		tell application "System Events"		tell process "SelfControl"			try				tell slider of window "SelfControl" to set value to myTime			on error				return "Error: SelfControl can't not be opened."			end try						delay 0.1						try				click button "Start" of window "SelfControl"			on error				if (exists window 1) then					return "Error: SelfControl has been activated."				else					return "Error: SelfControl has been forcefully closed."				end if			end try		end tell				repeat until (exists window 1 of process "SecurityAgent")			if (exists button "Start" of window "SelfControl" of process "SelfControl") then				return "Error: Please click on the title bar of SecurityAgent; otherwise the script can't proceed."			else if not (exists window 1 of process "SelfControl") then				return "Error: SelfControl has been forcefully closed."			end if		end repeat				tell window 1 of process "SecurityAgent"			set value of text field 2 to myPass						delay 0.1						click button "OK"		end tell	end tell		delay 1		tell application "SelfControl" to quit		return "SelfControl activated."end run</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
